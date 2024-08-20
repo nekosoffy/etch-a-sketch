@@ -8,8 +8,11 @@ function createSquares(num) {
     }
     const squares = document.querySelectorAll(".square");
     squares.forEach((square) => {
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
         square.addEventListener("mouseover", () => {
-            square.style.backgroundColor = "black";
+            square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
         });
     });
 }
