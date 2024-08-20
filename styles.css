@@ -1,20 +1,37 @@
 body {
     display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.left, .right {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+}
+
+button {
+    font-size: 30px;
+    margin: 11px 0px;
+    padding: 8px;
+    border-radius: 5px;
 }
 
 #container {
     display: flex;
     justify-content: center;
+    align-items: stretch;
     width: 800px;
     height: 800px;
     flex-wrap: wrap;
     outline: solid black 3px;
-    margin: 5px 0px;
+    margin: 15px 0px;
 }
 
 .square {
     width: 6.25%;
     height: 6.25%;
+    outline: 1px solid black;
 }
