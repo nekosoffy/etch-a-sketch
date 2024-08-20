@@ -4,6 +4,7 @@ function createSquares(num) {
     for (let i = 1; i <= num; i++) {
         const square = document.createElement("div");
         square.classList.add("square");
+        square.style.opacity = 0;
         container.appendChild(square);
     }
     const squares = document.querySelectorAll(".square");
@@ -13,6 +14,8 @@ function createSquares(num) {
         let b = Math.floor(Math.random() * 256);
         square.addEventListener("mouseover", () => {
             square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            let currentOpacity = parseFloat(square.style.opacity);
+            square.style.opacity = (currentOpacity+0.1) + "";
         });
     });
 }
