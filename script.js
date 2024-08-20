@@ -9,3 +9,10 @@ function createSquares() {
 }
 
 createSquares();
+
+const squares = document.querySelectorAll(".square");
+squares.forEach((square) => {
+    square.addEventListener("mouseover", () => {
+        square.style.backgroundColor = "black";
+    });
+});
