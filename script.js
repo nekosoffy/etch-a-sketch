@@ -4,9 +4,9 @@ function createSquares(num) {
   for (let i = 1; i <= num; i++) {
     const square = document.createElement('div');
     square.classList.add('square');
-    square.style.opacity = 0;
     container.appendChild(square);
   }
+
   const squares = document.querySelectorAll('.square');
   squares.forEach((square) => {
     let r = Math.floor(Math.random() * 256);
@@ -14,8 +14,11 @@ function createSquares(num) {
     let b = Math.floor(Math.random() * 256);
     square.addEventListener('mouseover', () => {
       square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-      let currentOpacity = parseFloat(square.style.opacity);
-      square.style.opacity = currentOpacity + 0.1;
+      let currentOpacity = +square.style.opacity;
+
+      if (currentOpacity < 1) {
+        square.style.opacity = currentOpacity + 0.1;
+      }
     });
   });
 }
@@ -26,6 +29,7 @@ function getSquaresPerSide() {
       'Please insert the number of squares per side for the new grid. The maximum allowed value is 100.'
     )
   );
+
   if (!Number.isInteger(squaresPerSide) || squaresPerSide > 100) {
     alert('Invalid input.');
   } else {
