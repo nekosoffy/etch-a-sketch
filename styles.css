@@ -1,42 +1,47 @@
-html, body {
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-    height: 100%;
-    width: 100%;
+html,
+body {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  height: 100%;
+  width: 100%;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.left, .right {
-    display: flex;
-    flex-grow: 1;
-    flex-basis: 0;
-    justify-content: center;
-    align-self: flex-start;
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 0;
+  justify-content: center;
+  align-items: flex-end;
+  margin-right: 50px;
 }
 
 button {
-    font-size: 20px;
-    padding: 8px;
-    border-radius: 5px;
-    margin-top: 3%;
+  font-size: 20px;
+  padding: 8px;
+  border-radius: 5px;
+  margin-top: 3%;
+  width: 150px;
 }
 
 #container {
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    align-items: stretch;
-    aspect-ratio: 1 / 1;
-    height: 95%;
-    flex-wrap: wrap;
-    outline: solid black 3px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: stretch;
+  aspect-ratio: 1 / 1;
+  height: 95%;
+  flex-wrap: wrap;
+  outline: solid black 3px;
 }
 
 .square {
-    width: 6.25%;
-    height: 6.25%;
+  width: 6.25%;
+  height: 6.25%;
 }

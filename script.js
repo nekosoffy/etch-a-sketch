@@ -1,4 +1,9 @@
 const container = document.querySelector('#container');
+const gridBtn = document.querySelector('.grid-btn');
+const rainbowBtn = document.querySelector('.rainbow-btn');
+const opacityBtn = document.querySelector('.opacity-btn');
+let rainbowMode = true;
+let opacityMode = false;
 
 function createSquares(num) {
   for (let i = 1; i <= num; i++) {
@@ -6,24 +11,9 @@ function createSquares(num) {
     square.classList.add('square');
     container.appendChild(square);
   }
-
-  const squares = document.querySelectorAll('.square');
-  squares.forEach((square) => {
-    let r = Math.floor(Math.random() * 256);
-    let g = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
-    square.addEventListener('mouseover', () => {
-      square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-      let currentOpacity = +square.style.opacity;
-
-      if (currentOpacity < 1) {
-        square.style.opacity = currentOpacity + 0.1;
-      }
-    });
-  });
 }
 
-function getSquaresPerSide() {
+function setSquaresPerSide() {
   let squaresPerSide = Number(
     prompt(
       'Please insert the number of squares per side for the new grid. The maximum allowed value is 100.'
@@ -43,7 +33,50 @@ function getSquaresPerSide() {
   }
 }
 
+function toggleRainbow() {
+  if (opacityMode) {
+    opacityMode = false;
+  }
+
+  rainbowMode = !rainbowMode;
+}
+
+function toggleOpacity() {
+  if (rainbowMode) {
+    rainbowMode = false;
+  }
+
+  opacityMode = !opacityMode;
+}
+
+function setRandomColor(event) {
+  if (rainbowMode) {
+    const target = event.target;
+
+    if (target.style.backgroundColor === '') {
+      let r = Math.floor(Math.random() * 256);
+      let g = Math.floor(Math.random() * 256);
+      let b = Math.floor(Math.random() * 256);
+      target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
+  }
+}
+
+function setGradualOpacity(event) {
+  if (opacityMode) {
+    const target = event.target;
+    let currentOpacity = +target.style.opacity;
+
+    if (currentOpacity < 1) {
+      target.style.opacity = currentOpacity + 0.1;
+    }
+  }
+}
+
 createSquares(256);
 
-button = document.querySelector('button');
-button.addEventListener('click', getSquaresPerSide);
+container.addEventListener('mouseover', setRandomColor);
+container.addEventListener('mouseover', setGradualOpacity);
+gridBtn.addEventListener('click', setSquaresPerSide);
+rainbowBtn.addEventListener('click', toggleRainbow);
+opacityBtn.addEventListener('click', toggleOpacity);
